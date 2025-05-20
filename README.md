@@ -77,16 +77,33 @@ Chúng ta sẽ quan sát phản hồi và hành vi cache ở từng trường h�
 
 #### default
 
-<div style="border: 2px dashed #007BFF; padding: 12px; border-radius: 6px;">
-  <!-- ![default](/assets/cache-control-off-default.webp) -->
-  <img src="/assets/cache-control-off-default.webp" alt="default" />
-</div>
+![default](/assets/cache-control-off-default.webp)
 
-Khi nhấn nút mặc định (default button)
+Khi nhấn nút **Default**, trình duyệt gửi yêu cầu đến server và dữ liệu được hiển thị ngay sau đó. Hành vi đúng như mong đợi: dữ liệu luôn được fetch trực tiếp từ server.
 
-<div style="border: 2px dashed #007BFF; padding: 12px; border-radius: 6px;">
-  <!-- ![default](/assets/cache-control-off-default.webp) -->
-  <img src="/assets/cache-control-off-default-button.webp" alt="default" />
-</div>
+Sau khi nhấn lại nút này lần nữa, dữ liệu tiếp tục được lấy từ server, không có dấu hiệu nào cho thấy trình duyệt sử dụng cache.
 
+![default](/assets/cache-control-off-default-button.webp)
 
+> Ở chế độ mặc định, `fetch` không ưu tiên sử dụng cache — mỗi lần gọi đều tạo ra một request mới đến server.
+
+#### Nút force-cache
+
+Khi sử dụng nút **force-cache**, trình duyệt trả về dữ liệu từ cache nếu đã tồn tại. Trong DevTools, có thể quan sát dòng `"from disk cache"`, cho thấy nội dung được lấy trực tiếp từ bộ nhớ đệm trên đĩa.
+
+Tiếp tục thực hiện **reload trang** (thông thường), sau đó click lại **force-cache** — kết quả vẫn được lấy từ cache.
+
+Nếu tiến hành **xóa cache và hard reload**, sau đó nhấn lại **force-cache**, trình duyệt không tìm thấy dữ liệu đã cache nên gửi lại request mới đến server.
+
+Sau lần request này, khi tiếp tục nhấn nút **force-cache**, dữ liệu đã được cache nên được trả về từ bộ nhớ đệm.
+
+## 🔍 Tổng kết
+
+### Hành vi của các chế độ:
+
+| Chế độ        | Hành vi                                                                  |
+| ------------- | ------------------------------------------------------------------------ |
+| `default`     | Luôn gửi request đến server, bỏ qua cache (trong trường hợp này).        |
+| `force-cache` | Sử dụng dữ liệu trong cache nếu có, chỉ fetch từ server nếu cache trống. |
+
+`force-cache` hoạt động như một chỉ dẫn cho trình duyệt: **ưu tiên cache tuyệt đối**, chỉ gửi request khi cache không tồn tại.
