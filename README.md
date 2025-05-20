@@ -31,7 +31,7 @@ Tôi thử tìm kiếm các ví dụ rõ ràng minh họa cache behavior của `
 Chúng ta sẽ lần lượt đi qua:
 
 - [Tổng quan về Cache](#cache--các-chế-độ-có-sẵn)
-- Cách hoạt động của Fetch Cache trong **trình duyệt (Vanilla JS)**
+- [Cách hoạt động của Fetch Cache trong **trình duyệt (Vanilla JS)**](#fetch-cache-với-vanilajs)
 - Cách hoạt động của Fetch Cache trong **Next.js (SSR)**
 - Một số lưu ý & Kết luận
 
@@ -41,14 +41,14 @@ Chúng ta sẽ lần lượt đi qua:
 
 Theo tài liệu chính thức, thuộc tính `cache` có thể nhận các giá trị sau:
 
-| Giá trị          | Mô tả ngắn gọn                             |
-|------------------|--------------------------------------------|
-| `default`        | Dùng cache nếu phù hợp                     |
-| `force-cache`    | Luôn ưu tiên lấy từ cache                  |
-| `only-if-cached` | Chỉ lấy nếu cache có sẵn                   |
-| `reload`         | Luôn gửi request mới, bỏ qua cache         |
-| `no-store`       | Không ghi và không đọc từ cache            |
-| `no-cache`       | Gửi request mới, có thể lưu cache nếu có   |
+| Giá trị          | Mô tả ngắn gọn                           |
+| ---------------- | ---------------------------------------- |
+| `default`        | Dùng cache nếu phù hợp                   |
+| `force-cache`    | Luôn ưu tiên lấy từ cache                |
+| `only-if-cached` | Chỉ lấy nếu cache có sẵn                 |
+| `reload`         | Luôn gửi request mới, bỏ qua cache       |
+| `no-store`       | Không ghi và không đọc từ cache          |
+| `no-cache`       | Gửi request mới, có thể lưu cache nếu có |
 
 > ℹ️ Trong bài viết này, ta sẽ **bỏ qua `no-cache`** vì nó liên quan đến **Conditional Requests**, có thể khiến chủ đề bị loãng.
 
@@ -56,7 +56,7 @@ Theo tài liệu chính thức, thuộc tính `cache` có thể nhận các giá
 
 ### Cấu trúc ví dụ và vai trò của Cache-Control
 
-![Kết quả thử nghiệm cache](/assets/overview-fetch-with-vanilajs.webp)
+![Cấu trúc ví dụ và vai trò của Cache-Control](/assets/overview-fetch-with-vanilajs.webp)
 
 Trong ví dụ này, chúng ta sẽ cùng tìm hiểu cách header `Cache-Control` ảnh hưởng đến phản hồi từ API. Cụ thể, khi bật `Cache-Control`, API `random-items` sẽ trả về dữ liệu kèm theo header sau:
 
@@ -72,4 +72,21 @@ Trong đó, `max-age` cho trình duyệt biết rằng nó được phép lưu l
 - **Có header `Cache-Control`**
 
 Chúng ta sẽ quan sát phản hồi và hành vi cache ở từng trường hợp để hiểu rõ tác động thực tế của cấu hình này.
+
+### cache-control off
+
+#### default
+
+<div style="border: 2px dashed #007BFF; padding: 12px; border-radius: 6px;">
+  <!-- ![default](/assets/cache-control-off-default.webp) -->
+  <img src="/assets/cache-control-off-default.webp" alt="default" />
+</div>
+
+Khi nhấn nút mặc định (default button)
+
+<div style="border: 2px dashed #007BFF; padding: 12px; border-radius: 6px;">
+  <!-- ![default](/assets/cache-control-off-default.webp) -->
+  <img src="/assets/cache-control-off-default-button.webp" alt="default" />
+</div>
+
 
