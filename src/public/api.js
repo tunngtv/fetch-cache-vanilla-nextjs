@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const API_URL = 'http://localhost:3333'
 
 const setResultText = (id, data) => {
