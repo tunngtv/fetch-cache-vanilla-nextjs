@@ -56,7 +56,7 @@ Theo tài liệu chính thức, thuộc tính `cache` có thể nhận các giá
 
 ### Cấu trúc ví dụ và vai trò của Cache-Control
 
-![Cấu trúc ví dụ và vai trò của Cache-Control](/assets/overview-fetch-with-vanilajs.webp)
+![Cấu trúc ví dụ và vai trò của Cache-Control](/assets/overview-fetch-with-vanilajs.svg)
 
 Trong ví dụ này, chúng ta sẽ cùng tìm hiểu cách header `Cache-Control` ảnh hưởng đến phản hồi từ API. Cụ thể, khi bật `Cache-Control`, API `random-items` sẽ trả về dữ liệu kèm theo header sau:
 
